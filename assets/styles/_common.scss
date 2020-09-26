@@ -1,0 +1,265 @@
+/*========================================
+ Setting
+========================================*/
+
+*,
+*::before,
+*::after {
+  color: $t_base;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  // font
+  font-family: "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic", sans-serif;
+  @media all and (-ms-high-contrast: none){
+    font-family: "Meiryo", "Segoe UI", sans-serif;
+  }
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: unset;
+  @media only screen and(-webkit-min-device-pixel-ratio: 2),(min-resolution: 2dppx) {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+
+/*========================================
+ header
+========================================*/
+
+.header {
+  z-index: 10;
+  position: fixed;
+  width: 100%;
+  background-color: $white;
+  transition: .3s;
+  .headerInner {
+    @include flex;
+    @include justifyContent(sb);
+    @include alignItems(center);
+    padding: 18px 2%;
+    @include breakPoint(md) {
+      padding: 0;
+    }
+    .logoWrap {
+      .logo {
+        width: 348px;
+        height: auto;
+        @include breakPoint(md) {
+          width: 255px;
+          padding-left: 4%;
+        }
+      }
+    }
+    .list {
+      @include flex;
+      @include alignItems(center);
+      @include breakPoint(md) {
+        display: none;
+      }
+      &__item {
+        margin-right: 24px;
+        text-align: center;
+        transition: .3s;
+        &:last-child {
+          margin-right: 0;
+        }
+        &:hover {
+          opacity: .5;
+          @include breakPoint(md) {
+            opacity: 1;
+          }
+        }
+        .list__link {
+          font-size: 1.6rem;
+          font-weight: bold;
+          .list__en {
+            display: block;
+            padding-top: 4px;
+            color: #E5E5E5;
+            font-size: 1.3rem;
+            font-family: "DIN Black", sans-serif;
+          }
+        }
+        .btn {
+          width: 356px;
+        }
+      }
+    }
+    // Trigger
+    .menuTrigger {
+      z-index: 11;
+      position: relative;
+      top: 0;
+      right: 0;
+      display: none;
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(to bottom right, #183E81, #6463A8);
+      transition: .3s;
+      @include breakPoint(md) {
+        display: inline-block;
+      }
+      .barWrap {
+        position: absolute;
+        top: 14px;
+        left: 17px;
+        display: inline-block;
+        width: 30px;
+        height: 16px;
+        .bar {
+          display: inline-block;
+          width: 100%;
+          height: 3px;
+          background-color: $white;
+          transition: .3s;
+          &:nth-of-type(1) {
+            top: 0;
+          }
+          &:nth-of-type(2) {
+            top: 8px;
+          }
+          &:nth-of-type(3) {
+            bottom: 0;
+          }
+        }
+      }
+    }
+    .menuTrigger--active {
+      background: transparent;
+      .barWrap {
+        .bar {
+          background-color: $t_blue;
+          &:nth-of-type(1) {
+            -webkit-transform: translateY(10px) rotate(-45deg);
+            transform: translateY(10px) rotate(-45deg);
+          }
+          &:nth-of-type(2) {
+            opacity: 0;
+          }
+          &:nth-of-type(3) {
+            -webkit-transform: translateY(-10px) rotate(45deg);
+            transform: translateY(-10px) rotate(45deg);
+          }
+        }
+      }
+    }
+  }
+}
+
+.drawer {
+  z-index: 9;
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100vh;
+  padding: 106px 32px 0;
+  background: linear-gradient(to bottom, #183E81, #6463A8);
+  .list {
+    &__item {
+      margin-bottom: 44px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      &:hover {
+        opacity: .5;
+        @include breakPoint(md) {
+          opacity: 1;
+        }
+      }
+      .list__link {
+        color: $white;
+        font-size: 1.9rem;
+        font-weight: bold;
+        .list__en {
+          display: block;
+          padding-top: 10px;
+          color: $white;
+          font-size: 1.6rem;
+          font-family: "DIN Black", sans-serif;
+        }
+      }
+      .btn {
+        &__text {
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+  .suppWrap {
+    text-align: center;
+    .supp {
+      display: inline-block;
+      padding-bottom: 10px;
+      margin-top: 16px;
+      color: $white;
+      font-size: 1.4rem;
+      font-weight: bold;
+      border-bottom: 1px solid $white;
+    }
+  }
+}
+
+/*========================================
+  main
+========================================*/
+
+.main {
+  display: block;
+}
+
+/*========================================
+  footer
+========================================*/
+
+.footer {
+  .listWrap {
+    padding: 30px 0;
+    background-color: #F7F7F8;
+    .container {
+      @include flex;
+      @include justifyContent(sb);
+      @include alignItems(center);
+    }
+    .list {
+      .list__item {
+        margin-bottom: 12px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+        .item__link {
+          color: $t_blue;
+          font-size: 1.4rem;
+          transition: .3s;
+          &:hover {
+            opacity: .5;
+            @include breakPoint(xs) {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+    .logo {
+      display: block;
+      @include breakPoint(xs) {
+        width: 125px;
+      }
+    }
+  }
+  .copyright {
+    padding: 7px 0 14px 0;
+    text-align: center;
+    font-size: 1.2rem;
+    color: $t_blue;
+  }
+}

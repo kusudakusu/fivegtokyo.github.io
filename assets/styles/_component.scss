@@ -1,0 +1,275 @@
+/*==================================
+ Component
+==================================*/
+
+/*== Base ====================*/
+
+.container--xl {
+  width: 1080px;
+}
+.container--l {
+  width: 980px;
+}
+.container--m {
+  width: 780px;
+}
+.container--s {
+  width: 680px;
+}
+
+.container--xl,
+.container--l,
+.container--m,
+.container--s {
+  margin: 0 auto;
+  @include breakPoint(md) {
+    width: 90%;
+  }
+}
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  height: 0;
+  visibility: hidden;
+}
+
+
+/*== component ====================*/
+
+// switch(br/img)
+.switch--pc {
+  @include breakPoint(xs) {
+    display: none;
+  }
+}
+.switch--sp {
+  display: none;
+  @include breakPoint(xs) {
+    display: block;
+  }
+}
+
+// switchIcon
+.switchIcon {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  &::before,&::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    display: inline-block;
+    width: 100%;
+    height: 2px;
+    background-color: $t_base;
+    transition: .3s;
+  }
+  &::before {
+    top: 15px;
+  }
+  &::after {
+    top: 14px;
+    transform: rotate(90deg);
+  }
+}
+.switchIcon--active {
+  &::after {
+    top: 15px;
+    transform: rotate(0deg);
+  }
+}
+
+// heading
+.headingWrap {
+  text-align: center;
+  .headingNormal {
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 0 3px 6px rgba(33,33,33,.14);
+    @include breakPoint(xs) {
+      font-size: 2.4rem;
+    }
+  }
+  .headingAngle {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 16px;
+    font-size: 3rem;
+    font-weight: bold;
+    @include breakPoint(xs) {
+      line-height: 1.5;
+      font-size: 2rem;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -18px;
+      left: 0;
+      display: inline-block;
+      width: 100%;
+      background-size: cover;
+      @include breakPoint(xs) {
+        bottom: 0;
+      }
+    }
+  }
+  .headingAngle--blue {
+    &::after {
+      height: 18px;
+      background-image: url("../images/common/decoration/heading_angleDown.svg");
+      @include breakPoint(xs) {
+        height: 8px;
+      }
+    }
+  }
+  .headingAngle--white {
+    color: $white;
+    &::after {
+      height: 17px;
+      background-image: url("../images/common/decoration/heading_angleDown-white.svg");
+      @include breakPoint(xs) {
+        height: 6px;
+      }
+    }
+  }
+  .headingAngle--purple {
+    padding-bottom: 10px;
+    text-shadow: 0 3px 6px rgba(33,33,33,.14);
+    &::after {
+      height: 16px;
+      background-image: url("../images/common/decoration/heading_angleDown-purple.svg");
+      @include breakPoint(xs) {
+        height: 12px;
+      }
+    }
+  }
+}
+.headingSide {
+  z-index: 9;
+  position: absolute;
+  width: 64px;
+  padding-top: 18px;
+  text-align: center;
+  border-top: 6px solid $t_base;
+  @include breakPoint(md) {
+    display: none;
+  }
+  &__text {
+    display: inline-block;
+    margin-left: -12px;
+    text-transform: capitalize;
+    font-size: 4rem;
+    font-family: "DIN Condensed", sans-serif;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+}
+.headingSide--white {
+  border-top: 6px solid $white;
+  .headingSide__text {
+    color: $white;
+  }
+}
+.headingSide--left {
+  left: 30px;
+}
+.headingSide--right {
+  right: 30px;
+}
+
+// text
+.normal {
+  font-weight: normal;
+}
+.bold {
+  font-weight: bold;
+}
+.din {
+  font-family: "DIN Medium", sans-serif;
+  font-weight: normal;
+}
+
+// btn
+.btn {
+  display: block;
+  padding: 20px 0;
+  text-align: center;
+  background: linear-gradient(to right, #F89328, #F4DB28);
+  border-radius: 100px;
+  transition: .3s;
+  &:hover {
+    opacity: .5;
+    @include breakPoint(xs) {
+      opacity: 1;
+    }
+  }
+  &__text {
+    display: inline-block;
+    color: $white;
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  &__text--icon {
+    position: relative;
+    padding-left: 38px;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto 0;
+      display: inline-block;
+      width: 28px;
+      height: 24px;
+      background-image: url("../images/common/icon/headphone.svg");
+      background-size: cover;
+    }
+  }
+}
+.btn--reverse {
+  background: $white;
+  border: 2px solid #F89028;
+  .btn__text {
+    color: #F89028;
+  }
+}
+.btn--balloon {
+  position: relative;
+  .balloon {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    width: 114px;
+    height: auto;
+    @include breakPoint(md) {
+      top: -30px;
+      right: -8px;
+      width: 86px;
+    }
+  }
+}
+
+
+// cv
+.cv {
+  .text {
+    margin-bottom: 20px;
+    line-height: 1.5;
+    text-align: center;
+    color: $t_orange;
+    font-size: 1.6rem;
+    font-weight: bold;
+  }
+  .btn {
+    width: 356px;
+    margin: 0 auto;
+    @include breakPoint(xs) {
+      width: 100%;
+    }
+  }
+}

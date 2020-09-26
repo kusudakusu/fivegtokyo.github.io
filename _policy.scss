@@ -1,0 +1,39 @@
+/*==================================
+ Policy
+==================================*/
+
+#policy {
+  padding-top: 94px;
+  #section-form {
+    padding-top: 0;
+  }
+  @include breakPoint(md) {
+    padding-top: 64px;
+  }
+  // ここにコードを書いてください。
+  .privacy-introduction{
+    margin-bottom:2em;
+  }
+
+  .SCT__item{
+    margin-bottom:2em;
+    font-size: 1.8rem;
+
+    .SCT__item__head{
+      margin-bottom: 1em;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    p{
+      text-align: left;
+    }
+
+    :not(.top-wrapper) p{
+      line-height:26px;
+    }
+  }
+
+
+
+}
